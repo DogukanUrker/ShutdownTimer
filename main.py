@@ -1,5 +1,5 @@
 import sys,os
-from PyQt6.QtWidgets import QLabel,QPushButton,QComboBox,QWidget,QVBoxLayout,QHBoxLayout,QApplication,QMainWindow
+from PyQt6.QtWidgets import QLabel,QPushButton,QComboBox,QWidget,QVBoxLayout,QHBoxLayout,QApplication
 def csslaoder(filename):
     with open(filename,'r') as file:
         icerik = file.read()
