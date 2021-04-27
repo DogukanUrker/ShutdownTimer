@@ -1,13 +1,20 @@
 #onayla {
-  background-color: rgba(39, 174, 96, 1);
+  background-color: rgba(3, 174, 96, 1);
 }
 #iptal {  
   background-color: rgba(192, 57, 43, 1);
 }
+
+#exit:hover{
+  background-color: red;
+}
+#minimized:hover{
+  background-color: orange;
+
+}
 QPushButton{
   border-radius: 7px ;
-  font-size: 14px;
-  height:28px ;
+  font-size: 20px;
   color: white;
   background-color: black;
   font-weight: bold;
@@ -22,7 +29,7 @@ QPushButton#onayla:hover {
   border-style: inset;
 }
 QWidget {
-  background-color: rgb(14, 15, 15);
+  background-color: rgb(26, 26, 26);
   color: aliceblue;
 }
 QComboBox {
@@ -30,7 +37,18 @@ QComboBox {
   border-radius: 7px;
   background: gray;
   color: white;
+  height: 26px;
+  width: 10px;
+  font-size: 18px;
 }
 QComboBox::drop-down {
   border-bottom-right-radius: 0px;
+}
+
+#metin {
+  font-size: 14px;
+}
+
+#soru1 {
+  font-size: 18px;
 }
