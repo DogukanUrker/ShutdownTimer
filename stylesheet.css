@@ -1,14 +1,14 @@
 #onayla {
-  background-color: rgba(3, 174, 96, 1);
+  background-color: rgb(51, 199, 72);
 }
 #iptal {  
-  background-color: rgba(192, 57, 43, 1);
+  background-color: rgb(252, 64, 60);
 }
 #exit:hover{
-  background-color: rgb(247, 7, 7);
+  background-color: rgb(252, 49, 46);
 }
 #minimized:hover{
-  background-color: rgb(247, 163, 8);
+  background-color: #fdb52f;
 }
 QPushButton{
   border-radius: 7px ;
@@ -19,11 +19,11 @@ QPushButton{
   padding: 4px;
 }
 QPushButton#iptal:hover {
-  background-color: rgba(192, 57, 43, 0.6);
+  background-color: rgba(252, 90, 86, 0.6);
   border-style: inset;
 }
 QPushButton#onayla:hover {
-  background-color: rgba(39, 174, 96, 0.6);
+  background-color: rgba(51, 199, 72,0.6);
   border-style: inset;
 }
 QWidget {
