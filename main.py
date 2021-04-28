@@ -1,9 +1,7 @@
 import sys,os
-from PyQt5.QtWidgets import QLabel,QGridLayout,QPushButton,QComboBox,QWidget,QVBoxLayout,QHBoxLayout,QApplication
-from PyQt5.QtCore import Qt,QCoreApplication
-from PyQt5.QtWidgets import * 
-from PyQt5.QtGui import * 
-from PyQt5.QtCore import * 
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 def csslaoder(filename):
     with open(filename,'r') as file:
         icerik = file.read()
@@ -15,7 +13,6 @@ class Pencere(QWidget):
         self.setGeometry(480,480,0,0)
         flags = Qt.WindowFlags(Qt.FramelessWindowHint)
         self.setWindowFlags(flags)
-        self.setWindowTitle("no title")
         self.ui()
     def ui(self):
         self.dugme = QPushButton("Onayla")
@@ -33,8 +30,8 @@ class Pencere(QWidget):
         self.dugme.setObjectName("onayla")
         self.exit.setObjectName("exit")
         self.minimized.setObjectName("minimized")
-        self.exit.setIcon(QIcon('exit.png'))
-        self.minimized.setIcon(QIcon('minimized.png'))
+        self.exit.setIcon(QIcon('icons/exit.png'))
+        self.minimized.setIcon(QIcon('icons/minimized.png'))
         grid = QGridLayout()
         grid.addWidget(self.exit,0,1)
         grid.addWidget(self.yazi,0,0)

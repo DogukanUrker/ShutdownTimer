@@ -6,10 +6,10 @@
 }
 
 #exit:hover{
-  background-color: red;
+  background-color: rgb(247, 7, 7);
 }
 #minimized:hover{
-  background-color: orange;
+  background-color: rgb(247, 163, 8);
 
 }
 QPushButton{
