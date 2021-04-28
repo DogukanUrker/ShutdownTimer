@@ -4,13 +4,11 @@
 #iptal {  
   background-color: rgba(192, 57, 43, 1);
 }
-
 #exit:hover{
   background-color: rgb(247, 7, 7);
 }
 #minimized:hover{
   background-color: rgb(247, 163, 8);
-
 }
 QPushButton{
   border-radius: 7px ;
@@ -32,23 +30,15 @@ QWidget {
   background-color: rgb(26, 26, 26);
   color: aliceblue;
 }
-QComboBox {
-  border: transparent;
-  border-radius: 7px;
-  background: gray;
-  color: white;
-  height: 26px;
-  width: 10px;
+#soru1  {
   font-size: 18px;
 }
-QComboBox::drop-down {
-  border-bottom-right-radius: 0px;
+#soru2 {
+  font-size: 18px;
 }
-
-#metin {
-  font-size: 14px;
-}
-
-#soru1 {
+QLineEdit {
+  border: 1px solid darkgrey;
+  border-radius: 7px;
+  padding: 0 8px;
   font-size: 18px;
 }
