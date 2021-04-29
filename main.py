@@ -18,8 +18,8 @@ class Pencere(QWidget):
         self.ui()
     def ui(self):
         self.ok = QPushButton("Onayla",self)
-        self.saat = QLineEdit(" ",self)
-        self.dakika = QLineEdit(" ",self)
+        self.saat = QLineEdit("",self)
+        self.dakika = QLineEdit("",self)
         self.yazi = QLabel("Saat:",self)
         self.yazi1 = QLabel("Dakika:",self)
         self.exit = QPushButton("",self)
@@ -48,7 +48,9 @@ class Pencere(QWidget):
     def yap(self):
         saat = self.saat.text()
         dk = self.dakika.text()
-        if dk == " " and saat == " " :
+        if dk == " " or saat == " " :
+            pass
+        elif dk == "" and saat == "" :
             pass
         elif saat == " " :
             os.system("shutdown -s -f -t {}".format(int(dk) * 60 ))   
