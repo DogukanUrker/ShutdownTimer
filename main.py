@@ -10,7 +10,7 @@ def csslaoder(filename):
 class Pencere(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(480,480,270,200)
+        self.setGeometry(750,500,270,200)
         flags = Qt.WindowFlags(Qt.FramelessWindowHint)
         self.setWindowTitle("Süreli PC Kapatma")
         self.setWindowIcon(QIcon('icons/bos.png'))
@@ -48,16 +48,14 @@ class Pencere(QWidget):
     def yap(self):
         saat = self.saat.text()
         dk = self.dakika.text()
-        if dk == " " or saat == " " :
+        if dk == " " or saat == " " or dk == "" or saat == "":
             pass
-        elif dk == "" and saat == "" :
-            pass
-        elif saat == " " :
+        elif saat == " " or saat == "":
             os.system("shutdown -s -f -t {}".format(int(dk) * 60 ))   
-        elif dk == " " :
+        elif dk == " " or dk == "":
             os.system("shutdown -s -f -t {}".format(int(saat) * 60 * 60 ))
         else :
-            os.system("shutdown -s -f -t {}".format(int(dk) * 60 * 60 , int(saat) * 60 ))
+            os.system("shutdown -s -f -t {}".format(int(saat) * 60 * 60 + int(dk) * 60 ))
     def kapa(self):
         os.system("shutdown -a")
 app = QApplication(sys.argv)
