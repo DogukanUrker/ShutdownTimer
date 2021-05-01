@@ -26,8 +26,6 @@ class Pencere(QWidget):
         self.minimized = QPushButton("",self)
         self.iptal = QPushButton("İptal Et",self)
         self.iptal.setObjectName("iptal")
-        self.yazi.setObjectName("soru1")
-        self.yazi1.setObjectName("soru2")
         self.ok.setObjectName("onayla")
         self.exit.setObjectName("exit")
         self.minimized.setObjectName("minimized")
