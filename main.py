@@ -2,19 +2,18 @@ import sys,os
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-def csslaoder(filename):
-    with open(filename,'r') as file:
+def css(isim):
+    with open(isim,'r') as file:
         icerik = file.read()
         file.close()
     return icerik
 class Pencere(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(750,500,270,200)
-        flags = Qt.WindowFlags(Qt.FramelessWindowHint)
+        self.setGeometry(600,400,270,200)
         self.setWindowTitle("Süreli PC Kapatma")
         self.setWindowIcon(QIcon('icons/bos.png'))
-        self.setWindowFlags(flags)
+        self.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
         self.ui()
     def ui(self):
         self.ok = QPushButton("Onayla",self)
@@ -46,18 +45,24 @@ class Pencere(QWidget):
     def yap(self):
         saat = self.saat.text()
         dk = self.dakika.text()
-        if dk == " " or saat == " " or dk == "" or saat == "":
-            pass
-        elif saat == " " or saat == "":
-            os.system("shutdown -s -f -t {}".format(int(dk) * 60 ))   
-        elif dk == " " or dk == "":
-            os.system("shutdown -s -f -t {}".format(int(saat) * 60 * 60 ))
-        else :
-            os.system("shutdown -s -f -t {}".format(int(saat) * 60 * 60 + int(dk) * 60 ))
+        try:
+            if saat == " " or saat == "":
+                os.system("shutdown -s -f -t {}".format(int(dk) * 60 ))   
+            elif dk == " " or dk == "":
+                os.system("shutdown -s -f -t {}".format(int(saat) * 60 * 60 ))
+            else :
+                os.system("shutdown -s -f -t {}".format(int(saat) * 60 * 60 + int(dk) * 60 ))
+        except:
+            msgBox = QMessageBox()
+            msgBox.setText("Lütfen girdiğiniz değerleri kontrol edin. ")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+            msgBox.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
+            msgBox.setGeometry(600,250,100,100)
+            ret = msgBox.exec_()            
     def kapa(self):
         os.system("shutdown -a")
 app = QApplication(sys.argv)
 pencere= Pencere()
 pencere.show()
-app.setStyleSheet(csslaoder("stylesheet.css"))
+app.setStyleSheet(css("stylesheet.css"))
 app.exec()

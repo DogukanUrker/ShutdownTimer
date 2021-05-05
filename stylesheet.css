@@ -18,11 +18,11 @@ QPushButton{
   font-weight: bold;
   padding: 4px;
 }
-QPushButton#iptal:hover {
+#iptal:hover {
   background-color: rgba(244, 67, 54,0.6);
   border-style: inset;
 }
-QPushButton#onayla:hover {
+#onayla:hover {
   background-color: rgba(4, 170, 109,0.6);
   border-style: inset;
 }
@@ -39,4 +39,14 @@ QLineEdit {
   border-radius: 7px;
   padding: 0 8px;
   font-size: 18px;
+}
+QMessageBox QLabel {
+  font-size:20px;
+  color: white;
+}
+QMessageBox QPushButton {
+  background-color:rgb(244, 67, 54)
+}
+QMessageBox QPushButton:hover {
+  background-color:rgba(244, 67, 54,0.6)
 }
