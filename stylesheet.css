@@ -1,14 +1,14 @@
 #onayla {
-  background-color: rgb(4, 170, 109);
+  background-color: rgb(27, 167, 78);
 }
 #iptal {  
-  background-color: rgb(244, 67, 54);
+  background-color: rgb(216, 38, 38);
 }
 #exit:hover{
-  background-color: rgb(252, 49, 46);
+  background-color: rgba(255, 56, 56,1.0);
 }
 #minimized:hover{
-  background-color: #fdb52f;
+  background-color: rgba(255, 159, 26,1.0);
 }
 QPushButton{
   border-radius: 7px ;
@@ -19,15 +19,15 @@ QPushButton{
   padding: 4px;
 }
 #iptal:hover {
-  background-color: rgba(244, 67, 54,0.6);
+  background-color: rgba(216, 38, 38, 0.6);
   border-style: inset;
 }
 #onayla:hover {
-  background-color: rgba(4, 170, 109,0.6);
+  background-color: rgba(27, 167, 78,0.6);
   border-style: inset;
 }
 QWidget {
-  background-color: rgb(26, 26, 26);
+  background-color: rgb(32, 30, 30);
   color: aliceblue;
 }
 QLabel   {
@@ -45,8 +45,30 @@ QMessageBox QLabel {
   color: white;
 }
 QMessageBox QPushButton {
-  background-color:rgb(244, 67, 54)
+  background-color:rgba(255, 56, 56,1.0)
 }
 QMessageBox QPushButton:hover {
-  background-color:rgba(244, 67, 54,0.6)
+  background-color:rgba(255, 56, 56,0.6)
 }
+
+QRadioButton {
+  font-size: 16px;
+
+}
+QRadioButton:hover {
+  background-color:rgb(58, 49, 49);
+
+}
+
+QRadioButton::indicator {
+  width: 20px;
+  height: 20px;
+  
+}
+
+QRadioButton:checked {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+
