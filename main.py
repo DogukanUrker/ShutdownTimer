@@ -7,8 +7,6 @@ def css(isim):
         icerik = dosya.read()
         dosya.close()
     return icerik
-
-
 class Pencere(QWidget):
     def __init__(self):
         super().__init__()
@@ -50,22 +48,49 @@ class Pencere(QWidget):
         self.saat.setGeometry(10,45,150,30)      
         self.yazi1.setGeometry(10,80,300,20)
         self.dakika.setGeometry(10,100,150,30)
-        self.yenidenbaslat.setGeometry(175,70,150,30)
-        self.kapat.setGeometry(175,40,150,30)
+        self.yenidenbaslat.setGeometry(175,70,70,30)
+        self.kapat.setGeometry(175,40,70,30)
         self.ok.setGeometry(10,135,120,60)
         self.iptal.setGeometry(140,135,120,60)
         self.ok.clicked.connect(self.yap)
         self.iptal.clicked.connect(self.islemiptal)
         self.exit.clicked.connect(QCoreApplication.instance().quit)
         self.minimized.clicked.connect(lambda: self.showMinimized())
+        self.kapat.setChecked(True)
     def yap(self):
         def islem(komut,dk,saat):
+            cevab1 = "kapatılacaktır"
+            cevab2 = "yeniden başlatılacaktır"
             if saat == " " or saat == "":
-                os.system("shutdown {} {}".format(komut,int(dk) * 60 ))   
+                sure = int(dk) * 60 
+                os.system("shutdown {} {}".format(komut,sure))   
+                if komut == "-s -f -t":
+                    uyarı(cevab1,int(dk))
+                else:
+                    uyarı(cevab2,int(dk))
             elif dk == " " or dk == "":
-                os.system("shutdown {} {}".format(komut,int(saat) * 60 * 60 ))
+                sure = int(saat) * 60 * 60 
+                sure2 = int(sure / 60 )
+                os.system("shutdown {} {}".format(komut,sure))
+                if komut == "-s -f -t":
+                    uyarı(cevab1,sure2)
+                else:
+                    uyarı(cevab2,sure2)
             else:
-                os.system("shutdown {} {}".format(komut,int(saat) * 60 * 60 + int(dk) * 60 ))
+                sure = int(saat) * 60 * 60 + int(dk) * 60 
+                sure2 = int(sure / 60 )
+                os.system("shutdown {} {}".format(komut,sure))
+                if komut == "-s -f -t":
+                    uyarı(cevab1,sure2)
+                else:
+                    uyarı(cevab2,sure2)
+        def uyarı(cevab,sure):
+            msgBox = QMessageBox()
+            msgBox.setText("Bilgisayarınız {} dk içinde {}".format(sure,cevab))
+            msgBox.setStandardButtons(QMessageBox.Ok)
+            msgBox.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
+            msgBox.setGeometry(600,250,100,100)
+            ret = msgBox.exec_()  
         saat = self.saat.text()
         dk = self.dakika.text()
         try:
