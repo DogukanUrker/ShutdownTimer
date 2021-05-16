@@ -1,12 +1,20 @@
-import sys,os
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+from sys import argv
+from os import system
+from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
+from PyQt5.QtCore import QPoint,QCoreApplication,Qt
+from PyQt5.QtGui import QIcon
 def css(isim):
     with open(isim,'r') as dosya:
         icerik = dosya.read()
         dosya.close()
     return icerik
+def uyarı(yazi):
+    mesaj = QMessageBox()
+    mesaj.setText(str(yazi))
+    mesaj.setStandardButtons(QMessageBox.Ok)
+    mesaj.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
+    mesaj.setGeometry(900,300,100,100)
+    ret = mesaj.exec_() 
 class Pencere(QWidget):
     def __init__(self):
         super().__init__()
@@ -58,39 +66,32 @@ class Pencere(QWidget):
         self.minimized.clicked.connect(lambda: self.showMinimized())
         self.kapat.setChecked(True)
     def yap(self):
+        kapat = "Bilgisayarınız {} dk içinde kapatılacaktır"
+        res = "Bilgisayarınız {} dk içinde yeniden başlatılacaktır"
         def islem(komut,dk,saat):
-            cevab1 = "kapatılacaktır"
-            cevab2 = "yeniden başlatılacaktır"
             if saat == " " or saat == "":
                 sure = int(dk) * 60 
-                os.system("shutdown {} {}".format(komut,sure))   
+                system("shutdown {} {}".format(komut,sure))   
                 if komut == "-s -f -t":
-                    uyarı(cevab1,int(dk))
+                    uyarı(kapat.format(dk))
                 else:
-                    uyarı(cevab2,int(dk))
+                    uyarı(res.format(dk))
             elif dk == " " or dk == "":
                 sure = int(saat) * 60 * 60 
                 sure2 = int(sure / 60 )
-                os.system("shutdown {} {}".format(komut,sure))
+                system("shutdown {} {}".format(komut,sure))
                 if komut == "-s -f -t":
-                    uyarı(cevab1,sure2)
+                    uyarı(kapat.format(sure2))
                 else:
-                    uyarı(cevab2,sure2)
+                    uyarı(res.format(sure2))
             else:
                 sure = int(saat) * 60 * 60 + int(dk) * 60 
                 sure2 = int(sure / 60 )
-                os.system("shutdown {} {}".format(komut,sure))
+                system("shutdown {} {}".format(komut,sure))
                 if komut == "-s -f -t":
-                    uyarı(cevab1,sure2)
+                    uyarı(kapat.format(sure2))
                 else:
-                    uyarı(cevab2,sure2)
-        def uyarı(cevab,sure):
-            msgBox = QMessageBox()
-            msgBox.setText("Bilgisayarınız {} dk içinde {}".format(sure,cevab))
-            msgBox.setStandardButtons(QMessageBox.Ok)
-            msgBox.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
-            msgBox.setGeometry(600,250,100,100)
-            ret = msgBox.exec_()  
+                    uyarı(res.format(sure2))
         saat = self.saat.text()
         dk = self.dakika.text()
         try:
@@ -99,15 +100,11 @@ class Pencere(QWidget):
             if self.yenidenbaslat.isChecked():
                 islem("/r /t",dk,saat)
         except:
-            msgBox = QMessageBox()
-            msgBox.setText("Lütfen girdiğiniz değerleri kontrol edin. ")
-            msgBox.setStandardButtons(QMessageBox.Ok)
-            msgBox.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
-            msgBox.setGeometry(600,250,100,100)
-            ret = msgBox.exec_()            
+            uyarı("Lütfen Girdiğiniz değerleri kontrol edin")        
     def islemiptal(self):
-        os.system("shutdown -a")
-app = QApplication(sys.argv)
+        system("shutdown -a")
+        uyarı("İşlem iptal edildi")
+app = QApplication(argv)
 pencere= Pencere()
 pencere.show()
 app.setStyleSheet(css("stylesheet.css"))
