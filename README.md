@@ -1,6 +1,4 @@
-# ShutdownTimer
-Basic PC shutdown/restart app.                                                                                 
+# Shutdown-Timer
+Simple app to shutdown or restart your computer whenever you want.                                                                            
 
-Exe: https://1drv.ms/u/s!AiL5tcu803MEgeM-S9nfpypAEbS23Q?e=zBgTF7
-
-Setup: https://1drv.ms/u/s!AiL5tcu803MEgeM_KinVQ6Hiu-qn1w?e=baYiaF
+Setup&Exe: dogukanurker.com/shutdowntimer

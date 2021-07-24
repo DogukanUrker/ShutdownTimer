@@ -2,7 +2,6 @@ from sys import argv
 from os import system
 from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
-from PyQt5.QtGui import QIcon
 def alert(text):
     message = QMessageBox()
     message.setText(str(text))
