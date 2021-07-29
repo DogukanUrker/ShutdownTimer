@@ -2,6 +2,12 @@ from sys import argv
 from os import system
 from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
+import platform
+os=""
+platform = platform.platform()
+say = platform.count("Windows")
+if(say>0):
+    os = "Windows"
 def alert(text):
     message = QMessageBox()
     message.setText(str(text))
@@ -60,6 +66,7 @@ class Window(QWidget):
         hours = self.hours.text()
         minutes = self.minutes.text()
         def operation(command,minutes,hours):
+          if os =="Windows":
             if hours == " " or hours == "":
                 time = int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))   
@@ -69,11 +76,27 @@ class Window(QWidget):
             else:
                 time = int(hours) * 60 * 60 + int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))
+          else:
+            if hours == " " or hours == "":
+                time = int(minutes) 
+                system("shutdown {} {}".format(command,time))   
+            elif minutes == " " or minutes == "":
+                time = int(hours) * 60 
+                system("shutdown {} {}".format(command,time))
+            else:
+                time = int(hours) * 60 + int(minutes) 
+                system("shutdown {} {}".format(command,time))
         try:
+          if os == "Windows":
             if self.shutdown.isChecked():
                 operation("-s -f -t",minutes,hours)
             if self.restart.isChecked():
                 operation("/r /t",minutes,hours)
+          else:
+            if self.shutdown.isChecked():
+                operation("-h",minutes,hours)
+            if self.restart.isChecked():
+                operation("-r",minutes,hours)
         except:
             alert("Please check the values")        
     def shutdown_cancel(self):
