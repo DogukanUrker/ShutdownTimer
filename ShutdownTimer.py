@@ -1,13 +1,12 @@
 from sys import argv
+import os
 from os import system
 from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
-import platform
+x = os.name.count("nt")
 os=""
-platform = platform.platform()
-say = platform.count("Windows")
-if(say>0):
-    os = "Windows"
+if(x>0):
+    os = "nt"
 def alert(text):
     message = QMessageBox()
     message.setText(str(text))
@@ -66,7 +65,7 @@ class Window(QWidget):
         hours = self.hours.text()
         minutes = self.minutes.text()
         def operation(command,minutes,hours):
-          if os =="Windows":
+          if os =="nt":
             if hours == " " or hours == "":
                 time = int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))   
@@ -87,7 +86,7 @@ class Window(QWidget):
                 time = int(hours) * 60 + int(minutes) 
                 system("shutdown {} {}".format(command,time))
         try:
-          if os == "Windows":
+          if os == "nt":
             if self.shutdown.isChecked():
                 operation("-s -f -t",minutes,hours)
             if self.restart.isChecked():
