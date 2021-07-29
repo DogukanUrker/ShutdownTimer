@@ -1,11 +1,11 @@
-from sys import argv
 import os
+from sys import argv
 from os import system
-from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
+from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
 x = os.name.count("nt")
-os=""
-if(x>0):
+os = " "
+if(x > 0):
     os = "nt"
 def alert(text):
     message = QMessageBox()
@@ -101,7 +101,7 @@ class Window(QWidget):
     def shutdown_cancel(self):
         system("shutdown -a")
 app = QApplication(argv)
-Window= Window()
+Window = Window()
 Window.show()
 app.setStyleSheet(
     """
