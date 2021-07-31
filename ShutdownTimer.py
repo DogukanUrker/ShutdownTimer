@@ -1,6 +1,6 @@
 import os
 from sys import argv
-from os import system
+from os import system 
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
 from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
 kernel = " "
