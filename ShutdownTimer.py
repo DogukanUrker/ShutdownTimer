@@ -3,10 +3,9 @@ from sys import argv
 from os import system
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
 from PyQt5.QtWidgets import QPushButton,QLineEdit,QLabel,QRadioButton,QMessageBox,QApplication,QWidget
-x = os.name.count("nt")
-os = " "
-if(x > 0):
-    os = "nt"
+kernel = " "
+if(os.name.count("nt") > 0):
+    kernel = "nt"
 def alert(text):
     message = QMessageBox()
     message.setText(str(text))
@@ -65,7 +64,7 @@ class Window(QWidget):
         hours = self.hours.text()
         minutes = self.minutes.text()
         def operation(command,minutes,hours):
-          if os =="nt":
+          if kernel =="nt":
             if hours == " " or hours == "":
                 time = int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))   
@@ -86,7 +85,7 @@ class Window(QWidget):
                 time = int(hours) * 60 + int(minutes) 
                 system("shutdown {} {}".format(command,time))
         try:
-          if os == "nt":
+          if kernel == "nt":
             if self.shutdown.isChecked():
                 operation("-s -f -t",minutes,hours)
             if self.restart.isChecked():
@@ -99,7 +98,10 @@ class Window(QWidget):
         except:
             alert("Please check the values")        
     def shutdown_cancel(self):
+      if kernel == "nt":
         system("shutdown -a")
+      else:
+        system("shutdown -c")
 app = QApplication(argv)
 Window = Window()
 Window.show()
