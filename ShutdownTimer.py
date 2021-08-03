@@ -71,7 +71,7 @@ class Window(QWidget):
             else:
                 time = int(hours) * 60 * 60 + int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))
-          else:
+          elif os.name == "posix":
             if hours == " " or hours == "":
                 time = int(minutes) 
                 system("shutdown {} {}".format(command,time))   
@@ -85,19 +85,19 @@ class Window(QWidget):
           if os.name == "nt":
             if self.shutdown.isChecked():
                 operation("-s -f -t",minutes,hours)
-            if self.restart.isChecked():
+            elif self.restart.isChecked():
                 operation("/r /t",minutes,hours)
-          else:
+          elif os.name == "posix":
             if self.shutdown.isChecked():
                 operation("-h",minutes,hours)
-            if self.restart.isChecked():
+            elif self.restart.isChecked():
                 operation("-r",minutes,hours)
         except:
             alert("Please check the values")        
     def shutdown_cancel(self):
       if os.name == "nt":
         system("shutdown -a")
-      else:
+      elif os.name == "posix":
         system("shutdown -c")
 app = QApplication(argv)
 Window = Window()
