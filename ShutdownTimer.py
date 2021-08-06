@@ -140,8 +140,7 @@ app.setStyleSheet(
 #exit:hover{
   background: rgba(255, 56, 56,0.7);
 }
-#minimized
-{
+#minimized{
   border-radius: 10px;
   background: rgb(255, 159, 26);
 }
@@ -174,9 +173,9 @@ QMessageBox QLabel {
   color: white;
 }
 QMessageBox QPushButton {
-    margin-right: 120px;
-    height: 40px;
-    width: 55px;
+  margin-right: 120px;
+  height: 40px;
+  width: 55px;
   background: rgb(27, 167, 78);
 }
 QMessageBox QPushButton:hover {
@@ -188,6 +187,7 @@ QRadioButton {
 QRadioButton:checked {
   border: 1px solid rgb(101, 236, 101);
   border-radius: 5px;
+  font-size: 18px;
 }
 QRadioButton::indicator {
   color : transparent;
