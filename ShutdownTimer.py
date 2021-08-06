@@ -1,4 +1,4 @@
-import os
+import platform
 from sys import argv
 from os import system 
 from PyQt5.QtCore import QPoint,QCoreApplication,Qt
@@ -61,7 +61,7 @@ class Window(QWidget):
         hours = self.hours.text()
         minutes = self.minutes.text()
         def operation(command,minutes,hours):
-          if os.name == "nt":
+          if platform.system() == "Windows":
             if not hours or hours.isspace():
                 time = int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))   
@@ -71,7 +71,7 @@ class Window(QWidget):
             else:
                 time = int(hours) * 60 * 60 + int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))
-          elif os.name == "posix":
+          elif platform.system() == "Linux":
             if not hours or hours.isspace():
                 time = int(minutes) 
                 system("shutdown {} {}".format(command,time))
@@ -94,12 +94,12 @@ class Window(QWidget):
                 elif command == "-r":
                   alert("Your computer restart in {} minutes".format(time))
         try:
-          if os.name == "nt":
+          if platform.system() == "Windows":
             if self.shutdown.isChecked():
                 operation("-s -f -t",minutes,hours)
             elif self.restart.isChecked():
                 operation("/r /t",minutes,hours)
-          elif os.name == "posix":
+          elif platform.system() == "Linux":
             if self.shutdown.isChecked():
                 operation("-h",minutes,hours)
             elif self.restart.isChecked():
@@ -107,9 +107,9 @@ class Window(QWidget):
         except:
             alert("Please check the values")        
     def shutdown_cancel(self):
-      if os.name == "nt":
+      if platform.system() == "Windows":
         system("shutdown -a")
-      elif os.name == "posix":
+      elif platform.system() == "Linux":
         system("shutdown -c")
         alert("Shutdown schedule is cancelled")
 app = QApplication(argv)
