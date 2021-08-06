@@ -62,28 +62,37 @@ class Window(QWidget):
         minutes = self.minutes.text()
         def operation(command,minutes,hours):
           if os.name == "nt":
-            if hours == " " or hours == "":
+            if not hours or hours.isspace():
                 time = int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))   
-            elif minutes == " " or minutes == "":
+            elif not minutes or minutes.isspace():
                 time = int(hours) * 60 * 60 
                 system("shutdown {} {}".format(command,time))
             else:
                 time = int(hours) * 60 * 60 + int(minutes) * 60 
                 system("shutdown {} {}".format(command,time))
           elif os.name == "posix":
-            if hours == " " or hours == "":
+            if not hours or hours.isspace():
                 time = int(minutes) 
-                system("shutdown {} {}".format(command,time))  
-                alert("Your computer shutdown/restart in {} minutes".format(time))
-            elif minutes == " " or minutes == "":
+                system("shutdown {} {}".format(command,time))
+                if command == "-h":
+                  alert("Your computer shutdown in {} minutes".format(time))
+                elif command == "-r":
+                  alert("Your computer restart in {} minutes".format(time))
+            elif not minutes or minutes.isspace():
                 time = int(hours) * 60 
                 system("shutdown {} {}".format(command,time))
-                alert("Your computer shutdown/restart in {} minutes".format(time))
+                if command == "-h":
+                  alert("Your computer shutdown in {} minutes".format(time))
+                elif command == "-r":
+                  alert("Your computer restart in {} minutes".format(time))
             else:
                 time = int(hours) * 60 + int(minutes) 
                 system("shutdown {} {}".format(command,time))
-                alert("Your computer shutdown/restart in {} minutes".format(time))
+                if command == "-h":
+                  alert("Your computer shutdown in {} minutes".format(time))
+                elif command == "-r":
+                  alert("Your computer restart in {} minutes".format(time))
         try:
           if os.name == "nt":
             if self.shutdown.isChecked():
@@ -107,7 +116,7 @@ app = QApplication(argv)
 Window = Window()
 Window.show()
 app.setStyleSheet(
-    """
+"""
 #start {
   background: rgb(27, 167, 78);
 }
@@ -131,8 +140,9 @@ app.setStyleSheet(
 #exit:hover{
   background: rgba(255, 56, 56,0.7);
 }
-#minimized{
-    border-radius: 10px;
+#minimized
+{
+  border-radius: 10px;
   background: rgb(255, 159, 26);
 }
 #minimized:hover{
