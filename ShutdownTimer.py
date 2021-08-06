@@ -74,13 +74,16 @@ class Window(QWidget):
           elif os.name == "posix":
             if hours == " " or hours == "":
                 time = int(minutes) 
-                system("shutdown {} {}".format(command,time))   
+                system("shutdown {} {}".format(command,time))  
+                alert("Your computer shutdown/restart in {} minutes".format(time))
             elif minutes == " " or minutes == "":
                 time = int(hours) * 60 
                 system("shutdown {} {}".format(command,time))
+                alert("Your computer shutdown/restart in {} minutes".format(time))
             else:
                 time = int(hours) * 60 + int(minutes) 
                 system("shutdown {} {}".format(command,time))
+                alert("Your computer shutdown/restart in {} minutes".format(time))
         try:
           if os.name == "nt":
             if self.shutdown.isChecked():
@@ -99,6 +102,7 @@ class Window(QWidget):
         system("shutdown -a")
       elif os.name == "posix":
         system("shutdown -c")
+        alert("Shutdown schedule is cancelled")
 app = QApplication(argv)
 Window = Window()
 Window.show()
@@ -161,8 +165,8 @@ QMessageBox QLabel {
 }
 QMessageBox QPushButton {
     margin-right: 120px;
-    height: 30px;
-    width: 45px;
+    height: 40px;
+    width: 55px;
   background: rgb(27, 167, 78);
 }
 QMessageBox QPushButton:hover {
@@ -181,6 +185,6 @@ QRadioButton::indicator {
   width: 1px;
   height: 1px;
 }
-    """
+"""
 )
 app.exec()
