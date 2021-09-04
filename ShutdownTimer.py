@@ -115,37 +115,39 @@ class Window(QWidget):
 app = QApplication(argv)
 Window = Window()
 Window.show()
-app.setStyleSheet(
-"""
+app.setStyleSheet("""
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
 #start {
-  background: rgb(27, 167, 78);
+  background: #198754;
 }
 #start:hover {
-  background: rgba(27, 167, 78,0.6);
+  background: #157347;
 }
 #abort {  
-  background: rgba(255, 56, 56,0.8);
+  background: #DC3545;
 }
 #abort:hover {
-  background: rgba(255, 56, 56,0.4);
+  background: #BB2D3B;
 }
 #shutdown, #restart{
     border-radius: 10px;
     text-align: center;
 }
 #exit{
-    border-radius: 10px;
-  background: rgba(255, 56, 56,1.0);
+  border-radius: 10px;
+  background: #DC3545;
 }
 #exit:hover{
-  background: rgba(255, 56, 56,0.7);
+  background: #BB2D3B;
 }
 #minimized{
   border-radius: 10px;
-  background: rgb(255, 159, 26);
+  background: #FFC107;
 }
 #minimized:hover{
-  background: rgba(255, 159, 26,0.7);
+  background: #FFCA2C;
 }
 QPushButton{
   border-radius: 10px ;
@@ -154,7 +156,7 @@ QPushButton{
   font-weight: bold;
 }
 QWidget {
-  background: rgb(32, 30, 30);
+  background: #212529;
   color: aliceblue;
 }
 QLabel   {
@@ -176,25 +178,23 @@ QMessageBox QPushButton {
   margin-right: 120px;
   height: 40px;
   width: 55px;
-  background: rgb(27, 167, 78);
+  background: #198754;
 }
 QMessageBox QPushButton:hover {
-  background: rgba(27, 167, 78,0.6);
+  background: #157347;
 }
 QRadioButton {
   font-size: 16px;
 }
 QRadioButton:checked {
-  border: 1px solid rgb(101, 236, 101);
+  border: 1px solid #198754;
   border-radius: 5px;
   font-size: 18px;
 }
 QRadioButton::indicator {
-  color : transparent;
   background:transparent;
   width: 1px;
   height: 1px;
 }
-"""
-)
+""")
 app.exec()
