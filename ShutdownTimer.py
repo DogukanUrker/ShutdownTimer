@@ -2,7 +2,17 @@ import platform
 from sys import argv
 from os import system
 from PyQt5.QtCore import QPoint, QCoreApplication, Qt
-from PyQt5.QtWidgets import QPushButton, QLineEdit, QLabel, QRadioButton, QMessageBox, QApplication, QWidget
+from PyQt5.QtWidgets import (
+    QPushButton,
+    QLineEdit,
+    QLabel,
+    QRadioButton,
+    QMessageBox,
+    QApplication,
+    QWidget,
+)
+
+
 def alert(text):
     message = QMessageBox()
     message.setText(str(text))
@@ -10,6 +20,8 @@ def alert(text):
     message.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint))
     message.setGeometry(875, 400, 0, 0)
     ret = message.exec_()
+
+
 class Window(QWidget):
     def __init__(self):
         super().__init__()
@@ -18,13 +30,16 @@ class Window(QWidget):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         self.dragPos = QPoint()
         self.ui()
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
+
     def mouseMoveEvent(self, event):
         if event.buttons() == Qt.LeftButton:
             self.move(self.pos() + event.globalPos() - self.dragPos)
             self.dragPos = event.globalPos()
             event.accept()
+
     def ui(self):
         self.ok = QPushButton("Start", self)
         self.hours = QLineEdit("", self)
@@ -57,9 +72,11 @@ class Window(QWidget):
         self.exit.clicked.connect(QCoreApplication.instance().quit)
         self.minimized.clicked.connect(lambda: self.showMinimized())
         self.shutdown.setChecked(True)
+
     def process(self):
         hours = self.hours.text()
         minutes = self.minutes.text()
+
         def operation(command, minutes, hours):
             if platform.system() == "Windows":
                 if not hours or hours.isspace():
@@ -93,6 +110,7 @@ class Window(QWidget):
                         alert("Your computer shutdown in {} minutes".format(time))
                     elif command == "-r":
                         alert("Your computer restart in {} minutes".format(time))
+
         try:
             if platform.system() == "Windows":
                 if self.shutdown.isChecked():
@@ -106,16 +124,20 @@ class Window(QWidget):
                     operation("-r", minutes, hours)
         except:
             alert("Please check the values")
+
     def shutdown_cancel(self):
         if platform.system() == "Windows":
             system("shutdown -a")
         elif platform.system() == "Linux":
             system("shutdown -c")
             alert("Shutdown schedule is cancelled")
+
+
 app = QApplication(argv)
 Window = Window()
 Window.show()
-app.setStyleSheet("""
+app.setStyleSheet(
+    """
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -196,5 +218,6 @@ QRadioButton::indicator {
   width: 1px;
   height: 1px;
 }
-""")
+"""
+)
 app.exec()
