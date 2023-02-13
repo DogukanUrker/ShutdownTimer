@@ -4,7 +4,7 @@ Simple app to **shutdown** or **restart** your computer **whenever** you want.
 
 ![shutdowntimer](shutdowntimer.png)
 
-## How to install
+## Installation
 
 download source code from github 💾
 `git clone https://github.com/DogukanUrker/ShutdownTimer.git`
