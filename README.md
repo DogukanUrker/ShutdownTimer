@@ -1,4 +1,4 @@
-# [Shutdown Timer](https://dogukanurker.com/shutdowntimer) ⌛💤
+# [Shutdown Timer](https://dogukanurker.com/shutdowntimer)💤
 
 Simple app to **shutdown** or **restart** your computer **whenever** you want.
 
