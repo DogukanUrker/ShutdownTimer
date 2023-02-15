@@ -18,6 +18,6 @@ go to directory 📁
 install requirements.txt 🔽
 `pip install -r requirements.txt`
 
-its ready to run 🎉
+it's ready to run 🎉
 `python ShutdownTimer.py`
 or [**download**](https://github.com/DogukanUrker/shutdowntimer/releases/download/v1/ShutdownTimer.exe) .exe
