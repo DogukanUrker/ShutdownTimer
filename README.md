@@ -9,7 +9,7 @@ Simple app to **shutdown** or **restart** your computer **whenever** you want.
 
 ## Installation
 
-download source code from github 💾
+download source code from Github 💾
 `git clone https://github.com/DogukanUrker/ShutdownTimer.git`
 
 go to directory 📁
