@@ -7,6 +7,12 @@ Simple app to **shutdown** or **restart** your computer **whenever** you want.
 
 ![shutdowntimer](shutdowntimer.png)
 
+
+## Requirements
+
+- PyQt5
+
+
 ## Installation
 
 download source code from Github 💾
