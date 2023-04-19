@@ -11,7 +11,7 @@ Simple app to **shutdown** or **restart** your computer **whenever** you want.
 
 - PyQt5
 
-## Installation⬇️
+## Installation ⬇️
 
 download source code from Github 💾
 `git clone https://github.com/DogukanUrker/ShutdownTimer.git`
