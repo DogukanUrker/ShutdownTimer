@@ -28,9 +28,7 @@ or [**download**](https://github.com/DogukanUrker/shutdowntimer/releases/downloa
 
 ### Contributors 💕
 
-<a href="https://github.com/dogukanurker/shutdowntimer/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=dogukanurker/shutdowntimer" />
-</a>
+<a href="https://github.com/dogukanurker"><img src="https://avatars.githubusercontent.com/u/62756402" title="ngryman" width="80" height="80"></a>
 
 ### Support 💰
 
