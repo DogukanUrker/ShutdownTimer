@@ -5,6 +5,7 @@ Simple app to **shutdown** or **restart** your computer **whenever** you want.
 [Contact](mailto:dogukanurker@icloud.com)<br/>
 [Dogukan Urker](https://dogukanurker.com)
 
+### [Demo Video 📺](https://youtu.be/Ya_kpFuGT34)
 ![shutdowntimer](shutdowntimer.png)
 
 ## Requirements 📦
